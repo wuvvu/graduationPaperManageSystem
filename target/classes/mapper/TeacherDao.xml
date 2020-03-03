@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bzh.project.mapper.TeacherMapper">
+
+    <select id="getTeacherById" resultType="com.bzh.project.model.teacher.Teacher">
+        select * from teacher where id = #{id} limit 1
+    </select>
+
+    <select id="listStudentByTeacherId" resultType="com.bzh.project.model.student.StudentAndPaper">
+        select
+            student.id as 'studentId',
+            student.realName as 'studentRealName',
+            paper.title as 'paperTitle',
+            paper.keyword as 'paperKeyword'
+        from
+            student, teacher, paper
+        where
+            student.teacherId = teacher.id and
+            student.paperId = paper.id and
+            teacher.id = #{id}
+        order by studentId
+    </select>
+
+    <select id="listPaperByTeacherId" resultType="com.bzh.project.model.paper.Paper">
+        select * from paper where teacherId = #{id}
+    </select>
+
+    <insert id="addPaper" parameterType="com.bzh.project.model.paper.Paper">
+        insert into paper(title,subtitle,keyword,overview,demand,module,remark,teacherId)
+            values(#{title},#{subtitle},#{keyword},#{overview},#{demand},#{module},#{remark},#{teacherId})
+    </insert>
+
+    <select id="listUnevaluatedPaper" resultType="com.bzh.project.model.paper.PaperSearchResult" parameterType="string">
+        select
+            s.id as 'studentId',
+            s.realName as 'studentRealName',
+            s.subject as 'studentSubject',
+            p.title as 'paperTitle',
+            p.keyword as 'paperKeyword',
+            s.graduationYear as 'studentGraduateYear'
+        from
+            student s, paper p
+        where
+            s.paperId = p.id and
+            p.teacherId = #{value} and
+            (p.firstEvaluationResult is null or
+             p.finalEvaluationResult is null)
+    </select>
+
+    <select id="viewPaperByStudentId" resultType="com.bzh.project.model.paper.PaperForView">
+        select
+            paper.id as 'paperId',
+            paper.title as 'paperTitle',
+            student.id as 'studentId',
+            student.realName as 'studentRealName',
+            student.graduationYear as 'studentGraduationYear',
+            teacher.realName as 'teacherRealName',
+            paper.firstFileName as 'paperFirstFileName',
+            paper.firstEvaluationResult as 'paperFirstEvaluationResult',
+            paper.finalFileName as 'paperFinalFileName',
+            paper.finalEvaluationResult as 'paperFinalEvaluationResult'
+        from
+            student, teacher, paper
+        where
+            student.paperId = paper.id and
+            student.teacherId = teacher.id and
+            student.id = #{id}
+    </select>
+
+    <update id="updateFirstEvaluation" parameterType="string">
+        update paper set firstEvaluationResult = #{evaluation} where id = #{paperId}
+    </update>
+
+    <update id="updateFinalEvaluation" parameterType="string">
+        update paper set finalEvaluationResult = #{evaluation} where id = #{paperId}
+    </update>
+
+    <select id="getFirstFileNameByPaperId" parameterType="string" resultType="string">
+        select firstFileName from paper where id = #{value}
+    </select>
+
+    <select id="getFinalFileNameByPaperId" parameterType="string" resultType="string">
+        select finalFileName from paper where id = #{value}
+    </select>
+</mapper>

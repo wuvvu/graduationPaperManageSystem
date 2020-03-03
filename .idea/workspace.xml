@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c26e53f6-e0a4-4253-a637-e318bfb78fb1" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - bishe@wuvvu.cn" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - bishe@wuvvu.cn" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - bishe@wuvvu.cn" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="bishe: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="bishe" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Kotlin File" />
+        <option value="Class" />
+        <option value="HTML File" />
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Program Files\maven\repository" />
+        <option name="mavenHome" value="D:/Program Files/maven" />
+        <option name="userSettingsFile" value="D:\Program Files\maven\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="jdkForImporter" value="#JAVA_HOME" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1RP3MeP2og8Mdi7xpw1N8oyquGs" />
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql.8" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="database.data.extractors.current.id" value="Tab-separated (TSV)_id" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../project" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.splitter.proportion" value="0.13683635" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspaces\IdeaProjects\Graduation Project\bishe\src\main\webapp\jsp\admin\new" />
+      <recent name="D:\workspaces\IdeaProjects\Graduation Project\bishe\src\main\webapp\jsp\admin\new\temp" />
+      <recent name="D:\workspaces\IdeaProjects\Graduation Project\bishe\src\main\webapp" />
+      <recent name="D:\workspaces\IdeaProjects\Graduation Project\bishe\src\main\webapp\jsp\admin\new\public" />
+      <recent name="D:\workspaces\IdeaProjects\Graduation Project\bishe\src\main\webapp\jsp\admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspaces\IdeaProjects\Graduation Project\bishe\src\main\webapp\img" />
+      <recent name="D:\workspaces\IdeaProjects\Graduation Project\bishe\src\main\webapp\jsp\admin" />
+      <recent name="D:\workspaces\IdeaProjects\Graduation Project\bishe\src\main\webapp" />
+      <recent name="D:\workspaces\IdeaProjects\Graduation Project\bishe\src\main\webapp\jsp\admin\img" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Graduation Project" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bzh.project.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@869ad31b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@869ad31b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@aef1d79a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+    <option name="showServicesTree" value="false" />
+  </component>
+  <component name="SpringBeansView">
+    <option name="beanDetailsProportion" value="0.3" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c26e53f6-e0a4-4253-a637-e318bfb78fb1" name="Default Changelist" comment="" />
+      <created>1569554856803</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569554856803</updated>
+      <workItem from="1569554859055" duration="7620000" />
+      <workItem from="1569577538297" duration="4990000" />
+      <workItem from="1569850070391" duration="5454000" />
+      <workItem from="1569904438068" duration="13935000" />
+      <workItem from="1570365835286" duration="2604000" />
+      <workItem from="1570425118953" duration="1393000" />
+      <workItem from="1570466460087" duration="3759000" />
+      <workItem from="1570801429990" duration="1607000" />
+      <workItem from="1571730056255" duration="205000" />
+      <workItem from="1571748619130" duration="884000" />
+      <workItem from="1572032520883" duration="602000" />
+      <workItem from="1572033690168" duration="5973000" />
+      <workItem from="1572352127643" duration="756000" />
+      <workItem from="1572353232056" duration="2092000" />
+      <workItem from="1572394622160" duration="1422000" />
+      <workItem from="1572448860292" duration="18000" />
+      <workItem from="1572678780816" duration="1103000" />
+      <workItem from="1572679918339" duration="65000" />
+      <workItem from="1572680005296" duration="782000" />
+      <workItem from="1572680842298" duration="46623000" />
+      <workItem from="1573012946907" duration="16209000" />
+      <workItem from="1573136233378" duration="76000" />
+      <workItem from="1573200831901" duration="514000" />
+      <workItem from="1573201494481" duration="1813000" />
+      <workItem from="1573218298392" duration="11000" />
+      <workItem from="1573626115394" duration="7178000" />
+      <workItem from="1573679816926" duration="1200000" />
+      <workItem from="1573723466815" duration="5529000" />
+      <workItem from="1573807174252" duration="22153000" />
+      <workItem from="1574093374702" duration="615000" />
+      <workItem from="1574519794872" duration="2593000" />
+      <workItem from="1574574503223" duration="729000" />
+      <workItem from="1574841654847" duration="9405000" />
+      <workItem from="1574925045323" duration="36438000" />
+      <workItem from="1575117497149" duration="10230000" />
+      <workItem from="1575292417348" duration="1769000" />
+      <workItem from="1575357750616" duration="26462000" />
+      <workItem from="1575550395616" duration="5093000" />
+      <workItem from="1575644134806" duration="3477000" />
+      <workItem from="1575889999572" duration="39990000" />
+      <workItem from="1576244450479" duration="6198000" />
+      <workItem from="1576392930875" duration="8094000" />
+      <workItem from="1576413183991" duration="29119000" />
+      <workItem from="1576505669830" duration="10121000" />
+      <workItem from="1576532607839" duration="49821000" />
+      <workItem from="1576838368577" duration="93000" />
+      <workItem from="1576839031485" duration="15866000" />
+      <workItem from="1576914473366" duration="31376000" />
+      <workItem from="1577103127148" duration="72551000" />
+      <workItem from="1577458897830" duration="7080000" />
+      <workItem from="1577563928944" duration="35938000" />
+      <workItem from="1577822250573" duration="453000" />
+      <workItem from="1577827787256" duration="108038000" />
+      <workItem from="1578589065949" duration="323000" />
+      <workItem from="1578589434148" duration="19000" />
+      <workItem from="1578589553591" duration="114000" />
+      <workItem from="1578710370990" duration="44235000" />
+      <workItem from="1579012876600" duration="76264000" />
+      <workItem from="1579710112055" duration="4206000" />
+      <workItem from="1580199936591" duration="1627000" />
+      <workItem from="1580201803915" duration="3846000" />
+      <workItem from="1580373019705" duration="31309000" />
+      <workItem from="1580630098343" duration="5944000" />
+      <workItem from="1581695832014" duration="21092000" />
+      <workItem from="1581911397595" duration="875000" />
+      <workItem from="1581996626856" duration="3214000" />
+      <workItem from="1582078635489" duration="760000" />
+      <workItem from="1582109516741" duration="114000" />
+      <workItem from="1582224241308" duration="596000" />
+      <workItem from="1582241193966" duration="2887000" />
+      <workItem from="1582471469679" duration="4080000" />
+      <workItem from="1582593380035" duration="616000" />
+      <workItem from="1582902359247" duration="3060000" />
+      <workItem from="1582942897174" duration="443000" />
+      <workItem from="1582951216175" duration="593000" />
+      <workItem from="1583207673593" duration="537000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

@@ -1,0 +1,51 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+
+mybatis:
+  typeAliasesPackage: com.bzh.project.model
+  mapperLocations: classpath:mapper/*.xml
+
+spring:
+  http:
+    encoding:
+      charset: utf-8
+      force: true
+      enabled: true
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .jsp
+  datasource:
+    url: jdbc:mysql://wuvvu.cn:33066/bishe?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC  # &allowMultiQueries=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      max-lifetime: 30000
+      connection-timeout: 30000
+  servlet:
+    multipart:
+      max-file-size: 1073741824 # 最大支持文件大小 即单个文件大小
+      max-request-size: 1073741824 # 最大支持请求大小 即一次性上传的总文件大小
+
+  #devTool
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+
+
+logging:
+  level:
+    com:
+      bzh:
+        project:
+          mapper : debug
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

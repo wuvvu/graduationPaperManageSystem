@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bzh.project.mapper.AdminMapper">
+
+    <select id="getAdminByUsername" resultType="com.bzh.project.model.admin.Admin">
+        select * from admin where username = #{value} limit 1
+    </select>
+
+    <select id="searchAnything" resultType="com.bzh.project.model.admin.PaperResult" parameterType="string">
+        select
+            student.id as 'studentId',
+            student.realName as 'studentRealName',
+            student.subject as 'studentSubject',
+            paper.title as 'paperTitle',
+            paper.keyword as 'paperKeyword',
+            student.graduationYear as 'studentGraduateYear',
+            teacher.realName as 'teacherName',
+            paper.finalEvaluationResult as 'paperFinalEvaluationResult',
+            teacher.jobTitle as 'teacherJobTitle'
+        from
+            student, teacher, paper
+        where
+            student.paperId = paper.id and
+            student.teacherId = teacher.id
+            <if test="value != null and value != ''">
+                and
+                (student.graduationYear like concat('%', #{value}, '%') or
+                paper.title like concat('%', #{value}, '%') or
+                paper.keyword like concat('%', #{value},'%') or
+                teacher.realName like concat('%', #{value},'%') or
+                student.realName like concat('%', #{value},'%') or
+                student.id like concat('%', #{value}, '%'))
+            </if>
+    </select>
+
+    <select id="getStudentById" resultType="com.bzh.project.model.student.Student">
+        select * from student where id = #{value} limit 1
+    </select>
+
+    <insert id="addStudent" parameterType="com.bzh.project.model.student.Student">
+        insert ignore into student(id, password, realName, subject, graduationYear) values(#{id},#{password},#{realName},#{subject},#{graduationYear})
+    </insert>
+
+    <update id="setStudentPassword" parameterType="com.bzh.project.model.student.Student">
+        update student set password = #{password} where id = #{id}
+    </update>
+
+    <update id="modifyStudent" parameterType="com.bzh.project.model.student.Student">
+        update student set password = #{password}, realName = #{realName}, subject = #{subject}, graduationYear = #{graduationYear}, teacherId = #{teacherId}, paperId = #{paperId}
+        where id = #{id}
+    </update>
+
+    <update id="resetStudentPassword" parameterType="com.bzh.project.model.student.Student">
+        update student set password = #{id} where id = #{id}
+    </update>
+
+    <delete id="deleteStudent" parameterType="com.bzh.project.model.student.Student">
+        delete from student where id = #{id} limit 1
+    </delete>
+
+    <select id="listStudentHavenotTeacher" resultType="com.bzh.project.model.student.Student">
+        select * from student where teacherId is null or teacherId = ''
+    </select>
+
+    <select id="getTeacherById" resultType="com.bzh.project.model.teacher.Teacher">
+        select * from teacher where id = #{value} limit 1
+    </select>
+
+    <insert id="addTeacher" parameterType="com.bzh.project.model.teacher.Teacher">
+        insert ignore into teacher(id, password, realName, jobTitle, officePhone, personalPhone) values(#{id},#{password},#{realName},#{jobTitle},#{officePhone},#{personalPhone})
+    </insert>
+
+    <update id="setTeacherPassword" parameterType="com.bzh.project.model.teacher.Teacher">
+        update teacher set password = #{password} where id = #{id}
+    </update>
+
+    <update id="modifyTeacher" parameterType="com.bzh.project.model.teacher.Teacher">
+        update teacher set realName = #{realName}, jobTitle = #{jobTitle}, officePhone = #{officePhone}, personalPhone = #{personalPhone}
+        where id = #{id}
+    </update>
+
+    <update id="resetTeacherPassword" parameterType="com.bzh.project.model.teacher.Teacher">
+        update teacher set password = #{id} where id = #{id}
+    </update>
+
+    <select id="getPaperById" resultType="com.bzh.project.model.paper.Paper">
+        select * from paper where id = #{value} limit 1
+    </select>
+
+    <insert id="addPaper" parameterType="com.bzh.project.model.paper.Paper">
+        insert into paper(id, title, subtitle, keyword, overview, demand, module, remark, teacherId, studentId, finalEvaluationResult, status)
+        values(#{id},#{title},#{subtitle},#{keyword},#{overview},#{demand},#{module},#{remark},#{teacherId},#{studentId},#{finalEvaluationResult},#{status})
+    </insert>
+
+    <update id="modifyPaper" parameterType="com.bzh.project.model.paper.Paper">
+        update paper set title = #{title}, subtitle = #{subtitle}, keyword = #{keyword}, overview = #{overview}, demand = #{demand}, module = #{module}, remark = #{remark},
+                         teacherId = #{teacherId}, studentId = #{studentId}, finalEvaluationResult = #{finalEvaluationResult}, status = #{status}
+        where id = #{id}
+    </update>
+
+    <select id="listUncheckedPaper" resultType="com.bzh.project.model.paper.UncheckedPaper">
+        select * from paper where status is null
+    </select>
+
+    <update id="checkPaper" parameterType="string">
+        update paper set status = 'checked' where id = #{value}
+    </update>
+
+    <select id="viewPaperByStudentId" parameterType="string" resultType="com.bzh.project.model.paper.PaperForView">
+        select
+            p.title as 'paperTitle',
+            s.id as 'studentId',
+            s.realName as 'studentRealName',
+            s.graduationYear as 'studentGraduationYear',
+            t.realName as 'teacherRealName',
+            p.finalEvaluationResult as 'paperFinalEvaluationResult'
+        from
+            student s, teacher t, paper p
+        where
+            s.id = p.studentId and
+            t.id = s.teacherId and
+            s.id = #{value}
+        limit 1
+    </select>
+
+    <select id="getAdminById" resultType="com.bzh.project.model.admin.Admin">
+        select * from admin where id = #{value} limit 1
+    </select>
+
+    <insert id="addAdmin" parameterType="com.bzh.project.model.admin.Admin">
+        insert ignore into admin(id, username, password, realName) values(#{id},#{username},#{password},#{realName})
+    </insert>
+
+    <update id="modifyAdmin" parameterType="com.bzh.project.model.admin.Admin">
+        update admin set username = #{username}, password = #{password}, realName = #{realName} where id = #{id}
+    </update>
+
+    <select id="listAnnouncement" resultType="com.bzh.project.model.admin.AnnouncementSearchResult" parameterType="string">
+        select * from annoucement
+        <if test="value != null and value != ''">
+         where
+            id = #{value} or
+            title like concat('%',#{value},'%') or
+            content like concat('%',#{value},'%') or
+            remark like concat('%',#{value},'%') or
+            createAdminId like concat('%',#{value},'%') or
+            lastModifyAdminId like concat('%',#{value},'%') or
+            createTime like concat('%',#{value},'%') or
+            lastModifyTime like concat('%',#{value},'%')
+        </if>
+    </select>
+    
+    <insert id="addAnnouncement" parameterType="com.bzh.project.model.admin.AnnouncementSearchResult">
+        insert into annoucement(title, content, remark, createAdminId, createTime)
+        values(#{title},#{content},#{remark},#{createAdminId},#{createTime})
+    </insert>
+
+    <select id="getAnnouncementById" resultType="com.bzh.project.model.admin.AnnouncementSearchResult">
+        select * from annoucement where id = #{id} limit 1
+    </select>
+
+    <update id="updateAnnouncement" parameterType="com.bzh.project.model.admin.Announcement">
+        update annoucement set title = #{title}, content = #{content}, remark=#{remark}, lastModifyAdminId = #{lastModifyAdmin.id}, lastModifyTime = #{lastModifyTime}
+        where id = #{id}
+    </update>
+
+
+    <!--
+    <select id="listTeachersWithoutTenStudents" resultType="Teacher">
+        select * from teacher where id in
+            (select id from
+                (select teacherId 'id', count(teacherId) 'count' from student group by teacherId) t
+            where t.count &lt; 10)
+    </select>
+
+    <resultMap id="studentCountsOfTeacher" type="StudentCountsOfTeacher">
+        <result property="count" column="studentCounts" />
+        <association property="teacher" column="teacherId" select="getTeacherById" javaType="Teacher"/>
+    </resultMap>
+
+    <resultMap id="teacherResult" type="Teacher">
+        <id property="id" column="id" />
+        <result property="realName" column="realName" />
+        <result property="password" column="password" />
+        <result property="jobTitle" column="jobTitle" />
+        <result property="officePhone" column="officePhone" />
+        <result property="personalPhone" column="personalPhone" />
+    </resultMap>
+
+    <select id="listStudentCountsOfTeachers" resultMap="studentCountsOfTeacher">
+        select id 'teacherId', t.count 'studentCounts' from (select teacherId 'id', count(teacherId) 'count' from student where teacherId is not null group by teacherId) t where t.count &lt; 10
+    </select>
+    -->
+
+    <select id="listTeachersWithoutTenStudents" resultType="com.bzh.project.model.teacher.Teacher">
+        select * from teacher where studentCounts &lt; 10
+    </select>
+
+    <update id="setTeachersStudentCounts">
+        update teacher set studentCounts = #{studentCounts} where id = #{id}
+    </update>
+
+    <insert id="addStudentFromList" parameterType="java.util.List">
+        insert ignore into student(id,password,realName,subject,graduationYear) values
+        <foreach collection="list" item="student" index="index" separator=",">
+            (#{student.id},
+            #{student.password},
+            #{student.realName},
+            #{student.subject},
+            #{student.graduationYear})
+        </foreach>
+    </insert>
+
+    <insert id="addTeacherFromList" parameterType="java.util.List">
+        insert ignore into teacher(id,password,realName,jobTitle,officePhone,personalPhone) values
+        <foreach collection="list" item="teacher" index="index" separator=",">
+            (#{teacher.id},
+            #{teacher.password},
+            #{teacher.realName},
+            #{teacher.jobTitle},
+            #{teacher.officePhone},
+            #{teacher.personalPhone})
+        </foreach>
+    </insert>
+
+    <select id="listStudent" resultType="com.bzh.project.model.student.Student">
+        select * from student
+    </select>
+
+    <select id="listTeacher" resultType="com.bzh.project.model.teacher.Teacher">
+        select * from teacher
+    </select>
+
+    <select id="listPaper" resultType="com.bzh.project.model.admin.PaperResult">
+        select
+            paper.id as 'paperId',
+            student.id as 'studentId',
+            student.realName as 'studentRealName',
+            student.subject as 'studentSubject',
+            paper.title as 'paperTitle',
+            paper.keyword as 'paperKeyword',
+            student.graduationYear as 'studentGraduateYear',
+            teacher.realName as 'teacherName',
+            paper.finalEvaluationResult as 'paperFinalEvaluationResult',
+            teacher.jobTitle as 'teacherJobTitle'
+        from
+            student, teacher, paper
+        where
+            student.paperId = paper.id and
+            student.teacherId = teacher.id
+    </select>
+
+    <select id="listAdmin" resultType="com.bzh.project.model.admin.Admin">
+        select * from admin
+    </select>
+
+    <select id="getPaperByStudentId" resultType="com.bzh.project.model.paper.Paper">
+        select * from paper where studentId = #{id} limit 1
+    </select>
+
+    <delete id="deleteAdmin" parameterType="com.bzh.project.model.admin.Admin">
+        delete from admin where id = #{id} limit 1
+    </delete>
+
+    <delete id="deleteAnnouncementByCreateAdminId" parameterType="com.bzh.project.model.admin.Admin">
+        delete from annoucement where createAdminId = #{id}
+    </delete>
+
+    <delete id="deleteAnnouncement" parameterType="com.bzh.project.model.admin.Announcement">
+        delete from annoucement where id = #{id} limit 1
+    </delete>
+
+    <delete id="deletePaper" parameterType="com.bzh.project.model.paper.Paper">
+        delete from paper where id = #{id} limit 1
+    </delete>
+
+    <delete id="deleteTeacher" parameterType="com.bzh.project.model.teacher.Teacher">
+        delete from teacher where id = #{id} limit 1
+    </delete>
+
+    <update id="setStudentCountsOfTeacher" parameterType="com.bzh.project.model.teacher.Teacher">
+        update teacher set studentCounts = #{counts} where id = #{id} limit 1
+    </update>
+
+    <delete id="deletePaperByTeacherId" parameterType="string">
+        delete from paper where teacherId = #{value}
+    </delete>
+
+</mapper>

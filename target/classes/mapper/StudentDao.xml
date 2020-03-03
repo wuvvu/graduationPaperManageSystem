@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bzh.project.mapper.StudentMapper">
+
+    <select id="getStudentById" resultType="com.bzh.project.model.student.Student">
+        select * from student where id = #{id} limit 1
+    </select>
+
+    <select id="getTeacherByStudentId" resultType="com.bzh.project.model.teacher.Teacher">
+        select teacher.* from teacher, student where student.teacherId = teacher.id and student.id = #{id} limit 1
+    </select>
+
+    <select id="getPaperByStudentId" resultType="com.bzh.project.model.paper.Paper">
+        select * from paper where studentId = #{id} limit 1
+    </select>
+
+    <select id="listUnselectedPaperByTeacherId" resultType="com.bzh.project.model.paper.Paper">
+        select * from paper where teacherId = #{id} and (studentId = '' or studentId is null)
+    </select>
+
+    <update id="studentSelectPaper">
+        update student, paper set
+            student.paperId = #{paperId} , paper.studentId = #{studentId}
+        where
+            student.id = #{studentId} and paper.id = #{paperId}
+    </update>
+
+
+    <select id="listAnnouncement" resultType="com.bzh.project.model.admin.AnnouncementSearchResult" parameterType="string">
+        select * from annoucement
+        <if test="value != null and value != ''">
+         where
+            id = #{value} or
+            title like concat('%',#{value},'%') or
+            content like concat('%',#{value},'%') or
+            remark like concat('%',#{value},'%') or
+            createAdminId like concat('%',#{value},'%') or
+            lastModifyAdminId like concat('%',#{value},'%') or
+            createTime like concat('%',#{value},'%') or
+            lastModifyTime like concat('%',#{value},'%')
+        </if>
+    </select>
+
+    <select id="getFirstFileNameByStudentId" resultType="string">
+        select firstFileName from paper where studentId = #{value}
+    </select>
+
+    <select id="getFinalFileNameByStudentId" resultType="string">
+        select finalFileName from paper where studentId = #{value}
+    </select>
+
+    <update id="uploadFirstFile">
+        update paper set firstFileName = #{FileName} where studentId = #{studentId}
+    </update>
+
+    <update id="uploadFinalFile">
+        update paper set finalFileName = #{FileName} where studentId = #{studentId}
+    </update>
+
+    <select id="getFirstEvaluationResultByStudentId" resultType="string" parameterType="string">
+        select firstEvaluationResult from paper where studentId = #{id}
+    </select>
+
+    <select id="getFinalEvaluationResultByStudentId" resultType="string" parameterType="string">
+        select finalEvaluationResult from paper where studentId = #{id}
+    </select>
+
+</mapper>
